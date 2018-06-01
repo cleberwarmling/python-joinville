@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: python-joinville-deployment
+  labels:
+    app: python-joinville
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: python-joinville
+  template:
+    metadata:
+      labels:
+        app: python-joinville
+    spec:
+      containers:
+      - name: python-joinville
+        image: cleberwarmling/python-joinville:latest
+        ports:
+        - containerPort: 5000
